@@ -123,6 +123,9 @@
 
             this._glMap = new mapboxgl.Map(options);
 
+            // create a listener for mapboxGL 'error' events if a handler is specified within options
+            if (options.hasOwnProperty('error')) this._glMap.on('error', options.error);
+
             // allow GL base map to pan beyond min/max latitudes
             this._glMap.transform.latRange = null;
 
@@ -238,4 +241,3 @@
     };
 
 }));
-
